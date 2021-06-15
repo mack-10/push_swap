@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 00:00:36 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 03:57:20 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,32 @@
 /*
 **	get_next_line.c
 */
-int			get_next_line(char **line);
+int				get_next_line(char **line);
+char			*g_strjoin(char *s1, char *s2);
 
 /*
 **	utils.c
 */
-void		free_double(char **s);
+void			error(char *s);
+void			free_once(char *s);
+void			free_double(char **s);
+
+/*
+**	linked_list.c
+*/
+
+typedef struct	s_node
+{
+	int				num;
+	struct s_node	*pre;
+	struct s_node	*next;
+}				t_node;
+t_node			*new_node(int num);
+void			add_lst_node(t_node **lst, int num);
+
+/*
+**	parsing.c
+*/
+void			parsing(char **s);
 
 #endif

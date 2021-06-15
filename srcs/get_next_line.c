@@ -6,13 +6,13 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 19:13:44 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/15 21:13:16 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 03:24:15 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char		*g_strjoin(char *s1, char *s2)
+char		*g_strjoin(char *s1, char *s2)
 {
 	char	*s;
 	int		i;
@@ -27,7 +27,7 @@ static char		*g_strjoin(char *s1, char *s2)
 	return (s);
 }
 
-int				get_next_line(char **line)
+int			get_next_line(char **line)
 {
 	char	buf[2];
 	char	*s;

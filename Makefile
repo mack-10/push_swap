@@ -5,7 +5,9 @@ NAME		=	push_swap
 SRC_PATH	=	srcs/
 SRC_NAME	=	main.c				\
 				get_next_line.c		\
-				utils.c
+				utils.c				\
+				linked_list.c		\
+				parsing.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ_PATH	=	objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))

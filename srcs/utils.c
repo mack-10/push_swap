@@ -6,11 +6,23 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/15 23:59:14 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 03:57:04 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error(char *s)
+{
+	write(2, s, ft_strlen(s));
+	exit(0);
+}
+
+void	free_once(char *s)
+{
+	free(s);
+	s = NULL;
+}
 
 void	free_double(char **s)
 {
