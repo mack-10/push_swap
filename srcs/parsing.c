@@ -6,11 +6,30 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 04:21:30 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 04:54:53 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	parsing_duplicate(char **s1)
+{
+	int		i;
+	int		j;
+	char	**s2;
+
+	s2 = s1;
+	i = -1;
+	while (s1[++i])
+	{
+		j = i;
+		while (s2[++j])
+		{
+			if (ft_atoi(s1[i]) == ft_atoi(s2[j]))
+				error("Error: Duplicated arguments\n");
+		}
+	}
+}
 
 static void	parsing_int_min_max(int sign, char *s)
 {
@@ -38,75 +57,37 @@ static void	parsing_int_min_max(int sign, char *s)
 	free_once(s);
 }
 
-static void	parsing_num(char **s)
+static int	parsing_num(char *s)
 {
 	int		i;
-	int		j;
 	int		sign;
 
+	sign = 0;
+	if (s[0] == '-')
+	{
+		sign = 1;
+		i = 1;
+	}
+	else
+		i = 0;
+	while ('0' <= s[i] && s[i] <= '9')
+		i++;
+	if (s[i])
+		error("Error: Not valid argument\n");
+	return (sign);
+}
+
+t_node		*parsing(char **s)
+{
+	int	i;
+	int sign;
+	
 	i = -1;
 	while (s[++i])
 	{
-		// num or not
-		if (s[i][0] == '-')
-		{
-			sign = 1;
-			j = 1;
-		}
-		else
-		{
-			sign = 0;
-			j = 0;
-		}
-		while ('0' <= s[i][j] && s[i][j] <= '9')
-			j++;
-		if (s[i][j])
-			error("Error: Not valid argument\n");
+		sign = parsing_num(s[i]);
 		parsing_int_min_max(sign, s[i]);
 	}
-}
-
-static void	parsing_duplicate(char **s1)
-{
-	int		i;
-	int		j;
-	char	**s2;
-
-	s2 = s1;
-	i = -1;
-	while (s1[++i])
-	{
-		j = i;
-		while (s2[++j])
-		{
-			printf("s1[%d]: %d, s2[%d]: %d\n", i, ft_atoi(s1[i]), j, ft_atoi(s2[j]));
-			if (ft_atoi(s1[i]) == ft_atoi(s2[j]))
-				error("Error: Duplicated arguments\n");
-		}
-	}
-}
-
-void		parsing(char **s)
-{
-	int		i;
-	t_node	*lst;
-	t_node	*first_node;
-
-	parsing_num(s);
 	parsing_duplicate(s);
-
-	// linked list
-	i = -1;
-	while (s[++i])
-	{
-		if (!i)
-		{
-			lst = new_node(ft_atoi(s[i]));
-			first_node = lst;
-		}			
-		else
-			add_lst_node(&lst, ft_atoi(s[i]));
-	}
-	lst->next = first_node;
-	first_node->pre = lst;
+	return (linked_lst(s));
 }

@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 03:57:10 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 04:58:58 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int			main(int argc, char *argv[])
 {
 	char	**split;
+	t_node	*lst;
 
 	if (argc == 1)
 		error("Error: No arguments\n");
@@ -23,12 +24,20 @@ int			main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		split = ft_split(argv[1], ' ');
-		parsing(split);
+		lst = parsing(split);
 		free_double(split);
 	}
 	// argc > 2
 	else
-		parsing(argv + 1);
+		lst = parsing(argv + 1);
+	
+	int i = 0;
+	while (++i < argc)
+	{
+		printf("[%d]lst->num | %d\n", i, lst->num);
+		lst = lst->next;
+	}
+	
 	// while (1);
 	return (0);
 }

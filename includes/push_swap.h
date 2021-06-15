@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 03:57:20 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 04:59:52 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ typedef struct	s_node
 	struct s_node	*pre;
 	struct s_node	*next;
 }				t_node;
-t_node			*new_node(int num);
-void			add_lst_node(t_node **lst, int num);
+t_node			*linked_lst(char **s);
 
 /*
 **	parsing.c
 */
-void			parsing(char **s);
+t_node			*parsing(char **s);
 
 #endif

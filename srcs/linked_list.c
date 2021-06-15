@@ -6,13 +6,13 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 00:46:45 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 04:59:49 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*new_node(int num)
+static t_node	*new_node(int num)
 {
 	t_node *new_node;
 
@@ -23,7 +23,7 @@ t_node	*new_node(int num)
 	return (new_node);
 }
 
-void	add_lst_node(t_node **lst, int num)
+static void		add_node(t_node **lst, int num)
 {
 	t_node	*new;
 	t_node	*pre;
@@ -33,4 +33,27 @@ void	add_lst_node(t_node **lst, int num)
 	(*lst)->next = new;
 	*lst = (*lst)->next;
 	(*lst)->pre = pre;
+}
+
+t_node			*linked_lst(char **s)
+{
+	t_node	*lst;
+	t_node	*first_node;
+	int		i;
+
+	i = -1;
+	while (s[++i])
+	{
+		if (!i)
+		{
+			lst = new_node(ft_atoi(s[i]));
+			first_node = lst;
+		}			
+		else
+			add_node(&lst, ft_atoi(s[i]));
+	}
+	lst->next = first_node;
+	first_node->pre = lst;
+	lst = lst->next;
+	return (lst);
 }
