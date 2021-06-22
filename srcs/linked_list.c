@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 04:59:49 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 20:23:10 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@ static t_node	*new_node(int num)
 	return (new_node);
 }
 
-static void		add_node(t_node **lst, int num)
+static t_node	*add_node(t_node *lst, int num)
 {
 	t_node	*new;
 	t_node	*pre;
 	
 	new = new_node(num);
-	pre = *lst;
-	(*lst)->next = new;
-	*lst = (*lst)->next;
-	(*lst)->pre = pre;
+	pre = lst;
+	lst->next = new;
+	lst = lst->next;
+	lst->pre = pre;
+	return (lst);
 }
 
-t_node			*linked_lst(char **s)
+t_node			*create_stack_a(char **s)
 {
-	t_node	*lst;
+	t_node	*stack;
 	t_node	*first_node;
 	int		i;
 
@@ -46,14 +47,12 @@ t_node			*linked_lst(char **s)
 	{
 		if (!i)
 		{
-			lst = new_node(ft_atoi(s[i]));
-			first_node = lst;
+			stack = new_node(ft_atoi(s[i]));
+			first_node = stack;
 		}			
 		else
-			add_node(&lst, ft_atoi(s[i]));
+			stack = add_node(stack, ft_atoi(s[i]));
 	}
-	lst->next = first_node;
-	first_node->pre = lst;
-	lst = lst->next;
-	return (lst);
+	stack = first_node;
+	return (stack);
 }

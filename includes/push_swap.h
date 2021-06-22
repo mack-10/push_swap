@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 04:59:52 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 20:43:56 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,26 @@ void			free_double(char **s);
 typedef struct	s_node
 {
 	int				num;
-	struct s_node	*pre;
-	struct s_node	*next;
+	struct t_node	*pre;
+	struct t_node	*next;
 }				t_node;
-t_node			*linked_lst(char **s);
+
+typedef struct	s_stack
+{
+	struct t_node	*top;
+	struct t_node	*bottom;
+}				t_stack;
+
+t_node			*create_stack_a(char **s);
 
 /*
 **	parsing.c
 */
 t_node			*parsing(char **s);
+
+/*
+**	push_swap.c
+*/
+void		push_swap(t_node *stack_a)
 
 #endif

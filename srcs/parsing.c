@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 04:54:53 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/16 19:14:55 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ t_node		*parsing(char **s)
 		parsing_int_min_max(sign, s[i]);
 	}
 	parsing_duplicate(s);
-	return (linked_lst(s));
+	return (create_stack_a(s));
 }
