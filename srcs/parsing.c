@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 19:14:55 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/23 23:21:31 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	parsing_num(char *s)
 	return (sign);
 }
 
-t_node		*parsing(char **s)
+void		parsing(char **s)
 {
 	int	i;
 	int sign;
@@ -89,5 +89,4 @@ t_node		*parsing(char **s)
 		parsing_int_min_max(sign, s[i]);
 	}
 	parsing_duplicate(s);
-	return (create_stack_a(s));
 }

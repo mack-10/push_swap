@@ -6,15 +6,13 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 20:16:10 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 20:45:26 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/23 23:34:13 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		push_swap(t_node *stack_a)
-{
-	t_stack	*a_info;
-	
-	while (stack_a->)
-}
+// void		push_swap(t_node *stack_a)
+// {
+		
+// }

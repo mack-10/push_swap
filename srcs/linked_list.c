@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 20:23:10 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/23 23:30:25 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,27 @@ static t_node	*add_node(t_node *lst, int num)
 	return (lst);
 }
 
-t_node			*create_stack_a(char **s)
+t_node			*create_stack_a(char **s, t_stack *info)
 {
 	t_node	*stack;
-	t_node	*first_node;
 	int		i;
 
+	info->size = 0;
 	i = -1;
 	while (s[++i])
 	{
 		if (!i)
 		{
 			stack = new_node(ft_atoi(s[i]));
-			first_node = stack;
+			info->top = stack;
 		}			
 		else
 			stack = add_node(stack, ft_atoi(s[i]));
+		info->size++;
 	}
-	stack = first_node;
+	info->bottom = stack;
+	stack = info->top;
+	printf("size: %d\n", info->size);
+	printf("top: %d\nbottom: %d\n", info->top->num, info->bottom->num);
 	return (stack);
 }

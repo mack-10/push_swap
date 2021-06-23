@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 03:57:04 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/06/23 23:18:50 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ void	free_double(char **s)
 	}
 	free(s);
 	s = NULL;
+}
+
+void	find_top_bottom(t_node *stack, t_stack *info)
+{
+	while (stack->pre)
+		stack = stack->pre;
+	info->top = stack;
+	while (stack->next)
+		stack = stack->next;
+	info->bottom = stack;
 }

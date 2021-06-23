@@ -7,7 +7,8 @@ SRC_NAME	=	main.c				\
 				get_next_line.c		\
 				utils.c				\
 				linked_list.c		\
-				parsing.c
+				parsing.c			\
+				push_swap.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ_PATH	=	objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))
@@ -16,12 +17,10 @@ LIB			=	libft
 
 .PHONY : all clean fclean re mkdir
 
-all : mkdir $(NAME)
-
-mkdir :
-	mkdir -p objs
+all : $(NAME)
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
+	mkdir -p objs
 	$(C) $(CFLAG) $(INC) -c $< -o $@
 
 $(NAME) : $(OBJ)
