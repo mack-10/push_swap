@@ -6,34 +6,23 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/23 23:33:55 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 00:00:16 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print(t_node **stack)
+void	print(t_node *stack)
 {
-	t_node	*stack_a;
-
-	stack_a = *stack;
 	// system("clear");
 
-	// print
-	int i = 1;
-	printf("\t|\tA|\tB|\n");
+	int i = 0;
+	printf("\n\t|\tA|\tB|\n");
 	printf("--------------------------\n");
-	while (stack_a)
+	while (stack)
 	{
-		// check top/ bottom
-		// if (!stack_a->pre)
-		// 	printf("bottom| %d\n", stack_a->num);
-		// if (!stack_a->next)
-		// 	printf("top| %d\n", stack_a->num);
-
-		// check stack_a->num
-		printf("[%0d]\t|\t%d|\n", i, stack_a->num);
-		stack_a = stack_a->next;
+		printf("[%0d]\t|\t%d|\n", i, stack->num);
+		stack = stack->next;
 		i++;
 	}
 }
@@ -65,8 +54,8 @@ int			main(int argc, char *argv[])
 		stack_a = create_stack_a(argv + 1, info);
 	}
 		
-	// push_swap(stack_a);
-	print(&stack_a);
+	push_swap(info, stack_a);
+	
 	// while (1);
 	return (0);
 }

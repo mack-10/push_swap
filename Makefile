@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
+#    Updated: 2021/07/01 23:41:00 by sujeon           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 C			=	gcc
 CFLAG		=	-Wall -Wextra -Werror
 INC			=	-Iincludes
@@ -8,7 +20,8 @@ SRC_NAME	=	main.c				\
 				utils.c				\
 				linked_list.c		\
 				parsing.c			\
-				push_swap.c
+				push_swap.c			\
+				sort_under_five.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ_PATH	=	objs/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))

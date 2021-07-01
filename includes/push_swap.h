@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/23 23:27:43 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 00:08:14 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ void			parsing(char **s);
 /*
 **	push_swap.c
 */
-void			push_swap(t_node *stack_a);
+void		push_swap(t_stack *info, t_node *stack_a);
+
+/*
+**	sort_under_five.c
+*/
+void		sort_under_five(t_stack *info, t_node *lst);
+
+/*
+**	operation.c
+*/
+void		swap(t_node *lst, t_node *pivot, char sign);
+
+// Need to DEL
+void		print(t_node *stack);
 
 #endif

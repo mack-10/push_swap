@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/16 20:16:10 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/01 23:21:57 by sujeon           ###   ########.fr       */
+/*   Created: 2021/07/02 00:03:11 by sujeon            #+#    #+#             */
+/*   Updated: 2021/07/02 00:08:50 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		push_swap(t_stack *info, t_node *stack_a)
+void		swap(t_node *lst, t_node *pivot, char sign)
 {
-	if (info->size <= 5)
-		sort_under_five(info, stack_a);
+	int tmp;
+	
+	tmp = lst->num;
+	lst->num = pivot->num;
+	pivot->num = tmp;
+	pivot = lst;
+	if (sign == 'a')
+		write(1, "sa\n", 3);
+	else
+		write(1, "sb\n", 3);
 }
+
+void		rotate(t_node )

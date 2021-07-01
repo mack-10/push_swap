@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/23 23:30:25 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/01 23:53:46 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ t_node			*create_stack_a(char **s, t_stack *info)
 	stack = info->top;
 	printf("size: %d\n", info->size);
 	printf("top: %d\nbottom: %d\n", info->top->num, info->bottom->num);
+	printf("--------------------------\n\n");
 	return (stack);
 }
