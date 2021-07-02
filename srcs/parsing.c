@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/23 23:21:31 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:27:54 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,22 @@ static int	parsing_num(char *s)
 	return (sign);
 }
 
-void		parsing(char **s)
+char	**parsing(int argc, char *argv[])
 {
-	int	i;
-	int sign;
+	int		i;
+	int		sign;
+	char	**src;
 	
+	if (argc == 2)
+		src = ft_split(argv[1], ' ');
+	else
+		src = argv + 1;
 	i = -1;
-	while (s[++i])
+	while (src[++i])
 	{
-		sign = parsing_num(s[i]);
-		parsing_int_min_max(sign, s[i]);
+		sign = parsing_num(src[i]);
+		parsing_int_min_max(sign, src[i]);
 	}
-	parsing_duplicate(s);
+	parsing_duplicate(src);
+	return (src);
 }

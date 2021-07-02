@@ -6,13 +6,13 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/02 00:00:16 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:35:55 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print(t_node *stack)
+void	print_sort(t_node *stack)
 {
 	// system("clear");
 
@@ -29,32 +29,19 @@ void	print(t_node *stack)
 
 int			main(int argc, char *argv[])
 {
-	char	**split;
 	t_node	*stack_a;
 	t_stack	*info;
+	char	**src;
 
-	// 예외
 	if (argc == 1)
 		error("Error: No arguments\n");
 
-	info = ft_calloc(1, sizeof(t_stack));
-
-	// argc == 2
-	if (argc == 2)
-	{
-		split = ft_split(argv[1], ' ');
-		parsing(split);
-		stack_a = create_stack_a(split, info);
-		free_double(split);
-	}
-	// argc > 2
-	else
-	{
-		parsing(argv + 1);
-		stack_a = create_stack_a(argv + 1, info);
-	}
-		
+	src = parsing(argc, argv);
+	stack_a = create_stack_a(src);
+	info = create_info(stack_a);
 	push_swap(info, stack_a);
+	if (argc == 2)
+		free_double(src);
 	
 	// while (1);
 	return (0);

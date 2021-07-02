@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/23 23:18:50 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:36:33 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	error(char *s)
 {
 	write(2, s, ft_strlen(s));
 	exit(0);
+}
+
+void	print(char *s)
+{
+	write(1, s, ft_strlen(s));
+	write(1, "\n", 1);
 }
 
 void	free_once(char *s)

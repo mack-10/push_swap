@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/01 23:53:46 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:29:46 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,42 @@ static t_node	*add_node(t_node *lst, int num)
 	return (lst);
 }
 
-t_node			*create_stack_a(char **s, t_stack *info)
+t_stack			*create_info(t_node *stack)
 {
-	t_node	*stack;
-	int		i;
+	t_stack	*info;
 
-	info->size = 0;
-	i = -1;
-	while (s[++i])
+	info = ft_calloc(1, sizeof(t_stack));
+	info->top = stack;
+	info->size = 1;
+	while (stack->next)
 	{
-		if (!i)
-		{
-			stack = new_node(ft_atoi(s[i]));
-			info->top = stack;
-		}			
-		else
-			stack = add_node(stack, ft_atoi(s[i]));
 		info->size++;
+		stack = stack->next;
 	}
 	info->bottom = stack;
-	stack = info->top;
 	printf("size: %d\n", info->size);
 	printf("top: %d\nbottom: %d\n", info->top->num, info->bottom->num);
 	printf("--------------------------\n\n");
+	return (info);
+}
+
+t_node			*create_stack_a(char **src)
+{
+	t_node	*stack;
+	t_node	*top;
+	int		i;
+
+	i = -1;
+	while (src[++i])
+	{
+		if (!i)
+		{
+			stack = new_node(ft_atoi(src[i]));
+			top = stack;
+		}
+		else
+			stack = add_node(stack, ft_atoi(src[i]));
+	}
+	stack = top;
 	return (stack);
 }

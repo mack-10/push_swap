@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/02 00:08:14 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:35:36 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ typedef struct	s_stack
 	int		size;
 }				t_stack;
 
-t_node			*create_stack_a(char **s, t_stack *info);
+t_node			*create_stack_a(char **src);
+t_stack			*create_info(t_node *stack);
 
 /*
 **	parsing.c
 */
-void			parsing(char **s);
-
+char			**parsing(int argc, char *argv[]);
 /*
 **	push_swap.c
 */
@@ -82,6 +82,6 @@ void		sort_under_five(t_stack *info, t_node *lst);
 void		swap(t_node *lst, t_node *pivot, char sign);
 
 // Need to DEL
-void		print(t_node *stack);
+void		print_sort(t_node *stack);
 
 #endif
