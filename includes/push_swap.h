@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/02 21:35:36 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/04 08:46:24 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char			*g_strjoin(char *s1, char *s2);
 **	utils.c
 */
 void			error(char *s);
+void			print(char *s);
 void			free_once(char *s);
 void			free_double(char **s);
 
@@ -79,7 +80,10 @@ void		sort_under_five(t_stack *info, t_node *lst);
 /*
 **	operation.c
 */
-void		swap(t_node *lst, t_node *pivot, char sign);
+void		s(char sign, t_node *stack1);
+t_node		*r(char sign, t_stack *info);
+t_node		*rr(char sign, t_stack *info);
+void		p(char sign, t_node **push, t_node **pop);
 
 // Need to DEL
 void		print_sort(t_node *stack);

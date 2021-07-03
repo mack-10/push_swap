@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/02 21:35:55 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/04 08:37:47 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_sort(t_node *stack)
 	// system("clear");
 
 	int i = 0;
-	printf("\n\t|\tA|\tB|\n");
+	printf("\nstack\n");
 	printf("--------------------------\n");
 	while (stack)
 	{
@@ -25,6 +25,7 @@ void	print_sort(t_node *stack)
 		stack = stack->next;
 		i++;
 	}
+	printf("\n");
 }
 
 int			main(int argc, char *argv[])
