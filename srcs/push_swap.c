@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 20:16:10 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/01 23:21:57 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/05 04:56:33 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void		push_swap(t_stack *info, t_node *stack_a)
 {
 	if (info->size <= 5)
-		sort_under_five(info, stack_a);
+		sort_five(info, stack_a);
+	// 100, 500
 }

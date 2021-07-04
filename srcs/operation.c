@@ -6,17 +6,16 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 00:03:11 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/04 08:48:07 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/05 03:08:15 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void		s(char sign, t_node *stack)
+void	s(char sign, t_node *stack)
 {
-	int tmp;
-	
+	int	tmp;
+
 	tmp = stack->num;
 	stack->num = stack->next->num;
 	stack->next->num = tmp;
@@ -26,19 +25,19 @@ void		s(char sign, t_node *stack)
 		print("sb");
 }
 
-t_node		*r(char sign, t_stack *info)
+t_node	*r(char sign, t_stack *info)
 {
-	t_node *ex_top;
-	t_node *ex_bot;
-	
-	ex_top = info->top;
-	ex_bot = info->bottom;
-	info->top = ex_top->next;
-	info->bottom = ex_top;
+	t_node	*new;
+	t_node	*del;
+
+	new = new_node(info->top->num);
+	del = info->top;
+	info->top = info->top->next;
 	info->top->pre = NULL;
-	ex_bot->next = info->bottom;
-	info->bottom->pre = ex_bot;
-	info->bottom->next = NULL;
+	info->bot->next = new;
+	new->pre = info->bot;
+	info->bot = new;
+	free(del);
 	if (sign == 'a')
 		print("ra");
 	else
@@ -46,19 +45,19 @@ t_node		*r(char sign, t_stack *info)
 	return (info->top);
 }
 
-t_node		*rr(char sign, t_stack *info)
+t_node	*rr(char sign, t_stack *info)
 {
-	t_node *ex_top;
-	t_node *ex_bot;
-	
-	ex_top = info->top;
-	ex_bot = info->bottom;
-	info->top = ex_bot;
-	info->bottom = ex_bot->pre;
-	info->top->pre = NULL;
-	info->top->next = ex_top;
-	ex_top->pre = info->top;
-	info->bottom->next = NULL;
+	t_node	*new;
+	t_node	*del;
+
+	new = new_node(info->bot->num);
+	del = info->bot;
+	info->bot = info->bot->pre;
+	info->bot->next = NULL;
+	info->top->pre = new;
+	new->next = info->top;
+	info->top = new;
+	free(del);
 	if (sign == 'a')
 		print("rra");
 	else
@@ -66,29 +65,29 @@ t_node		*rr(char sign, t_stack *info)
 	return (info->top);
 }
 
-void		p(char sign, t_node **push, t_node **pop)
+void	p(char sign, t_node **push, t_node **pop)
 {
+	t_node	*new;
+
 	if (!(*pop))
 	{
-		*pop = *push;
+		new = new_node((*push)->num);
+		*pop = new;
 		*push = (*push)->next;
-		(*push)->pre = NULL;
-		(*pop)->next = NULL;
 	}
-	// else
-	// {
-	// 	while(pop->next)
-	// 		pop = pop->next;
-	// 	pop->next = push;
-	// 	push = push->next;
-	// 	push->pre = NULL;
-	// 	pop->next->next = NULL;
-	// }
+	else
+	{
+		new = new_node((*push)->num);
+		new->next = *pop;
+		(*pop)->pre = new;
+		*pop = new;
+		if ((*push)->next)
+			*push = (*push)->next;
+		else
+			*push = NULL;
+	}
 	if (sign == 'a')
 		print("pa");
 	else
 		print("pb");
-
-	// print_sort(*push);
-	// print_sort(*pop);
 }

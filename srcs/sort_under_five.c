@@ -6,72 +6,72 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 22:23:04 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/04 08:48:31 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/05 04:52:26 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static int	check_sort(t_node *lst)
-// {
-// 	while (lst->next)
-// 	{
-// 		if (lst->num > lst->next->num)
-// 			return (0);
-// 		lst = lst->next;
-// 	}
-// 	return (1);
-// }
-
-// void		set_bot_big(t_stack *info, t_node *stack)
-// {
-// 	int	big;
-// 	int loc;
-// 	int cnt;
-	
-// 	big = stack->num;
-// 	loc = 0;
-// 	cnt = 0;
-// 	while (stack->next)
-// 	{
-// 		stack = stack->next;
-// 		if (big < stack->num)
-// 		{
-// 			big = stack->num;
-// 			loc = cnt;
-// 		}
-// 		cnt++;
-// 	}
-// 	if (info->size - loc < loc)
-// 		rra
-// 	else
-// 		ra
-// }
-
-// void		sort(t_stack *info, t_node *stack_a, t_node *stack_b)
-// {
-// 	set_bot_big(info, stack_a);
-// 	while (!check_sort)
-// 	{
-
-// 	}
-	
-// }
-
-void		sort_under_five(t_stack *info, t_node *stack_a)
+static int	check_sort(t_node *stack)
 {
-	t_node	*stack_b;
+	while (stack->next)
+	{
+		if (stack->num > stack->next->num)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
 
-	stack_b = NULL;
+static int	find_max(t_node *stack)
+{
+	int max;
+	
+	max = stack->num;
+	while (stack->next)
+	{
+		if (max < stack->next->num)
+			max = stack->next->num;
+		stack = stack->next;
+	}
+	return (max);
+}
 
-	s('a', stack_a);
-	print_sort(stack_a);
-	stack_a = r('a', info);
-	print_sort(stack_a);
-	stack_a = rr('a', info);
-	print_sort(stack_a);
-	p('b', &stack_a, &stack_b);
-	print_sort(stack_a);
-	print_sort(stack_b);
-	// sort(info, stack_a);
+void	sort_five(t_stack *info, t_node *stack)
+{
+	int max;
+	int	cnt;
+	int flag;
+
+	cnt = 0;
+	max = find_max(stack);
+	flag = 0;
+	while (!check_sort(stack))
+	{
+		if (stack->next->num == max && info->size < 5)
+			flag = 1;
+		if ((stack->num == max
+			|| stack->next->num == max
+			|| stack->next->next->num == max)
+			&& info->size == 5)
+			flag = 1;
+		if (!flag)
+		{
+			if (stack->num < stack->next->num)
+				stack = r('a', &info[0]);
+			else if (stack->num > stack->next->num)
+				s('a', stack);
+		}
+		else
+		{
+			if (stack->num < stack->next->num)
+				stack = rr('a', &info[0]);
+			else if (stack->num > stack->next->num)
+				s('a', stack);
+		}
+		get_info_val(&info, stack, NULL);
+		if (info[0].bot->num == max)
+			flag = 0;
+		cnt++;
+	}
 }

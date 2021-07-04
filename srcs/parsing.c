@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/02 21:27:54 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/05 04:54:29 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	parsing_duplicate(char **s1)
 		while (s2[++j])
 		{
 			if (ft_atoi(s1[i]) == ft_atoi(s2[j]))
-				error("Error: Duplicated arguments\n");
+				error();
 		}
 	}
 }
@@ -38,9 +38,12 @@ static void	parsing_int_min_max(int sign, char *s)
 	char	*tmp;
 	int		i;
 
-	if ((sign && (len = ft_strlen(s + 1)) > 10) ||
-		(!sign && (len = ft_strlen(s)) > 10))
-		error("Error: Over/Underflow\n");
+	if (sign)
+		len = ft_strlen(s + 1);
+	else
+		len = ft_strlen(s);
+	if (len > 10)
+		error();
 	join = (char *)ft_calloc(10 - len, sizeof(char));
 	i = -1;
 	while (++i < 10 - len)
@@ -50,9 +53,9 @@ static void	parsing_int_min_max(int sign, char *s)
 	else
 		tmp = ft_strjoin(join, s);
 	s = tmp;
-	if ((sign && ft_strncmp("2147483648", s, ft_strlen(s)) < 0) ||
-		(!sign && ft_strncmp("2147483647", s, ft_strlen(s)) < 0))
-		error("Error: Over/Underflow\n");
+	if ((sign && ft_strncmp("2147483648", s, ft_strlen(s)) < 0)
+		|| (!sign && ft_strncmp("2147483647", s, ft_strlen(s)) < 0))
+		error();
 	free_once(join);
 	free_once(s);
 }
@@ -73,7 +76,7 @@ static int	parsing_num(char *s)
 	while ('0' <= s[i] && s[i] <= '9')
 		i++;
 	if (s[i])
-		error("Error: Not valid argument\n");
+		error();
 	return (sign);
 }
 
@@ -82,7 +85,7 @@ char	**parsing(int argc, char *argv[])
 	int		i;
 	int		sign;
 	char	**src;
-	
+
 	if (argc == 2)
 		src = ft_split(argv[1], ' ');
 	else
