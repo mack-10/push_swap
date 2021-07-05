@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sujeon <sujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 20:09:19 by sujeon            #+#    #+#             */
-/*   Updated: 2020/11/02 10:53:26 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:06:22 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-	int idx;
+	int	idx;
 
 	idx = 0;
 	while (s[idx])

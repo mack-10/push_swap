@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sujeon <sujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 17:07:48 by sujeon            #+#    #+#             */
-/*   Updated: 2020/11/03 14:38:59 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:07:37 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(""));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(new_str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
-		return (0);
+	new_str = (char *)ft_strjoin(sizeof(char) * (s1_len + s2_len + 1));
 	ft_strlcpy(new_str, s1, s1_len + 1);
 	ft_strlcat(new_str + s1_len, s2, s2_len + 1);
 	return (new_str);

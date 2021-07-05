@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:12:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/05 01:24:21 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:38:01 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_node	*new_node(int num)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = (t_node *)ft_calloc(1, sizeof(t_node));
 	new_node->num = num;
@@ -27,7 +27,7 @@ static t_node	*add_back(t_node *lst, int num)
 {
 	t_node	*new;
 	t_node	*pre;
-	
+
 	new = new_node(num);
 	pre = lst;
 	lst->next = new;
@@ -36,7 +36,7 @@ static t_node	*add_back(t_node *lst, int num)
 	return (lst);
 }
 
-t_node			*create_stack_a(char **src)
+t_node	*create_stack_a(char **src)
 {
 	t_node	*stack;
 	t_node	*top;

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sujeon <sujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 18:13:59 by sujeon            #+#    #+#             */
-/*   Updated: 2020/11/08 15:53:12 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:10:22 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		search_begin(char *str, char const *set)
+int	search_begin(char *str, char const *set)
 {
-	int cnt;
-	int idx1;
-	int idx2;
+	int	cnt;
+	int	idx1;
+	int	idx2;
 
 	cnt = 0;
 	idx1 = 0;
@@ -39,11 +39,11 @@ int		search_begin(char *str, char const *set)
 	return (cnt);
 }
 
-int		search_end(char *str, char const *set)
+int	search_end(char *str, char const *set)
 {
-	int cnt;
-	int end;
-	int idx;
+	int	cnt;
+	int	end;
+	int	idx;
 
 	end = ft_strlen(str) - 1;
 	cnt = 0;
@@ -82,7 +82,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(""));
 	cnt_e = search_end(cpy_s1 + cnt_b, set);
 	total = cnt_b + cnt_e;
-	if (!(trim = ft_substr(cpy_s1, cnt_b, ft_strlen(cpy_s1) - total)))
+	trim = ft_substr(cpy_s1, cnt_b, ft_strlen(cpy_s1) - total));
+	if (!trim)
 		return (NULL);
 	return (trim);
 }

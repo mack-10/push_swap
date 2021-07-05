@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sujeon <sujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 20:40:36 by sujeon            #+#    #+#             */
-/*   Updated: 2020/11/04 11:01:20 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:02:08 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ char	*n_positive(int n)
 		cpy_n = cpy_n / 10;
 		idx++;
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (idx + 1))))
-		return (0);
+	str = (char *)ft_calloc(sizeof(char) * (idx + 1));
 	str[idx] = 0;
 	while (--idx != -1)
 	{
@@ -49,8 +48,7 @@ char	*n_negative(int n)
 		cpy_n = cpy_n / 10;
 		idx++;
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (idx + 1))))
-		return (0);
+	str = (char *)ft_calloc(sizeof(char) * (idx + 1));
 	str[0] = '-';
 	str[idx] = 0;
 	while (--idx != 0)

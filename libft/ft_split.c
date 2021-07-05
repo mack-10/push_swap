@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sujeon <sujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 23:08:02 by sujeon            #+#    #+#             */
-/*   Updated: 2020/11/10 01:05:41 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:16:12 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		cnt_len(char *str, char c)
+int	cnt_len(char *str, char c)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (str[cnt])
@@ -27,10 +27,10 @@ int		cnt_len(char *str, char c)
 	return (cnt);
 }
 
-int		cnt_str(char *str, char c)
+int	cnt_str(char *str, char c)
 {
-	int idx;
-	int cnt;
+	int	idx;
+	int	cnt;
 
 	idx = 0;
 	cnt = 0;
@@ -59,9 +59,9 @@ void	free_str(char **str, int idx)
 
 char	**put_value(char **str, char *src, char c)
 {
-	int idx;
-	int total;
-	int len;
+	int	idx;
+	int	total;
+	int	len;
 
 	idx = 0;
 	total = 0;
@@ -72,7 +72,8 @@ char	**put_value(char **str, char *src, char c)
 		else
 		{
 			len = cnt_len(src + total, c);
-			if (!(str[idx] = ft_substr(src, total, len)))
+			str[idx] = ft_substr(src, total, len);
+			if (!str[idx])
 			{
 				free_str(str, idx - 1);
 				return (NULL);
@@ -94,13 +95,15 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (!ft_strncmp(s, "", 1))
 	{
-		if (!(str = (char **)malloc(sizeof(char *) * 1)))
+		str = (char **)malloc(sizeof(char *) * 1);
+		if (!str)
 			return (NULL);
 		str[0] = 0;
 		return (str);
 	}
 	cpy_s = (char *)s;
-	if (!(str = (char **)malloc(sizeof(char *) * (cnt_str(cpy_s, c) + 1))))
+	str = (char **)malloc(sizeof(char *) * (cnt_str(cpy_s, c) + 1));
+	if (!str)
 		return (NULL);
 	put_value(str, cpy_s, c);
 	return (str);

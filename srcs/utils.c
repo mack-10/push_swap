@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/05 04:53:35 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:46:20 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_once(char *s)
 
 void	free_double(char **s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -46,11 +46,9 @@ void	free_double(char **s)
 
 void	get_info_val(t_stack **info, t_node *stack_a, t_node *stack_b)
 {
-	t_stack	*tmp;
 	t_node	*stack;
-	int	i;
+	int		i;
 
-	tmp = *info;
 	i = -1;
 	while (++i < 2)
 	{
@@ -60,16 +58,16 @@ void	get_info_val(t_stack **info, t_node *stack_a, t_node *stack_b)
 			stack = stack_b;
 		if (stack)
 		{
-			tmp[i].size = 1;
+			(*info)[i].size = 1;
 			while (stack->pre)
 				stack = stack->pre;
-			tmp[i].top = stack;
+			(*info)[i].top = stack;
 			while (stack->next)
 			{
 				stack = stack->next;
-				tmp[i].size++;
+				(*info)[i].size++;
 			}
-			tmp[i].bot = stack;
+			(*info)[i].bot = stack;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 21:02:22 by sujeon            #+#    #+#             */
-/*   Updated: 2021/06/16 01:54:12 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:00:07 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *p;
+	void	*p;
 
-	if (!(p = malloc(nmemb * size)))
-		error("Error: Allocating memory failed\n");
+	p = malloc(nmemb * size);
+	if (!p)
+		error();
 	ft_bzero(p, nmemb * size);
 	return (p);
 }
