@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/05 04:53:59 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:25:59 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ void	s(char sign, t_node *stack);
 t_node	*r(char sign, t_stack *info);
 t_node	*rr(char sign, t_stack *info);
 void	p(char sign, t_node **push, t_node **pop);
+
+/*
+**	sort_over_five.c
+*/
+
+void	sort_over_5(t_stack *info, t_stack *stack_a);
 
 // DELETE
 void	print_sort(t_node *stack_a, t_node *stack_b);

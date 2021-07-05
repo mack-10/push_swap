@@ -6,7 +6,7 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/06 02:47:39 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/06 03:25:21 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_NAME	=	main.c				\
 				linked_list.c		\
 				parsing.c			\
 				push_swap.c			\
-				sort_under_five.c	\
+				sort_under_5.c		\
+				sort_over_5.c		\
 				operation.c			\
 				del.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
