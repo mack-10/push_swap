@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/06 03:25:59 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/08 05:41:14 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 
 // DELETE
 # include <stdio.h>
+# define R "\x1b[31m"
+# define G "\x1b[32m"
+# define RESET "\x1b[0m"
 
+static int cnt;
 /*
 **	STRUCT
 */
@@ -61,6 +65,7 @@ void	print(char *s);
 void	free_once(char *s);
 void	free_double(char **s);
 void	get_info_val(t_stack **info, t_node *stack_a, t_node *stack_b);
+int		check_sort(t_node *stack, int flag);
 
 /*
 **	linked_list.c
@@ -78,12 +83,12 @@ char	**parsing(int argc, char *argv[]);
 /*
 **	push_swap.c
 */
-void	push_swap(t_stack *info, t_node *stack_a);
+void	push_swap(t_stack *info);
 
 /*
 **	sort_under_five.c
 */
-void	sort_five(t_stack *info, t_node *stack_a);
+void	sort_under_5(t_stack *info);
 
 /*
 **	operation.c
@@ -96,11 +101,11 @@ void	p(char sign, t_node **push, t_node **pop);
 /*
 **	sort_over_five.c
 */
-
-void	sort_over_5(t_stack *info, t_stack *stack_a);
+void	sort_over_5(t_stack *info);
 
 // DELETE
-void	print_sort(t_node *stack_a, t_node *stack_b);
+void	print_sort(t_stack *info);
 void	print_info(t_stack *info);
+
 
 #endif

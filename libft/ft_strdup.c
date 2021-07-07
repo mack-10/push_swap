@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 21:38:39 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/06 03:07:07 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/07 22:58:39 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*ft_strdup(const char *s)
 
 	idx = 0;
 	size = ft_strlen(s);
-	new_str = (char *)ft_calloc(sizeof(char) * (size + 1));
+	new_str = (char *)ft_calloc(size + 1, sizeof(char));
+	if (!new_str)
+		return (0);
 	while (idx < size)
 	{
 		new_str[idx] = s[idx];

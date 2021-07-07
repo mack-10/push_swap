@@ -6,17 +6,21 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 02:39:28 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/06 02:43:05 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/08 05:49:08 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_sort(t_node *stack_a, t_node *stack_b)
+void	print_sort(t_stack *info)
 {
-	int	i;
-
-	i = 0;
+	static int	first_size;
+	int	i = 0;
+	t_node *stack_a = info[0].top;
+	t_node *stack_b = info[1].top;
+	
+	if (!first_size)
+		first_size = info[0].size;
 	printf("\nstack\n");
 	printf("--------------------------\n");
 	while (stack_a || stack_b)
@@ -62,5 +66,5 @@ void	print_info(t_stack *info)
 		printf("\t%d\n", info[1].bot->num);
 	else
 		printf("\t\n");
-	printf("--------------------------\n\n");
+	printf("--------------------------\n");
 }

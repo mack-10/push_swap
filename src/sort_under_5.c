@@ -6,22 +6,11 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 22:23:04 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/06 03:24:49 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/08 04:25:20 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	check_sort(t_node *stack)
-{
-	while (stack->next)
-	{
-		if (stack->num > stack->next->num)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
 
 static int	find_max(t_node *stack)
 {
@@ -42,30 +31,31 @@ static void	move(int flag, t_stack *info, t_node *stack)
 	if (!flag)
 	{
 		if (stack->num < stack->next->num)
-			stack = r('a', info);
+			stack = r('a', &info[0]);
 		else if (stack->num > stack->next->num)
 			s('a', stack);
 	}
 	else
 	{
 		if (stack->num < stack->next->num)
-			stack = rr('a', info);
+			stack = rr('a', &info[0]);
 		else if (stack->num > stack->next->num)
 			s('a', stack);
 	}
-	get_info_val(&info, stack, NULL);
 }	
 
-void	sort_five(t_stack *info, t_node *stack)
+void	sort_under_5(t_stack *info)
 {
+	t_node *stack;
 	int	max;
 	int	cnt;
 	int	flag;
-
+	
+	stack = info[0].top;
 	cnt = 0;
 	max = find_max(stack);
 	flag = 0;
-	while (!check_sort(stack))
+	while (!check_sort(stack, 1))
 	{
 		if (stack->next->num == max && info->size < 5)
 			flag = 1;

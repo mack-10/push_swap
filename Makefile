@@ -6,17 +6,18 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/06 03:25:21 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/08 04:24:32 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C			=	gcc
-CFLAG		=	-Wall -Wextra -Werror
+CFLAG		=	-Wall -Wextra -Werror -fsanitize=address
 INC			=	-Iincludes
 NAME		=	push_swap
-SRC_PATH	=	srcs/
+SRC_PATH	=	src/
 SRC_NAME	=	main.c				\
-				utils.c				\
+				utils_1.c			\
+				utils_2.c			\
 				linked_list.c		\
 				parsing.c			\
 				push_swap.c			\
@@ -25,7 +26,7 @@ SRC_NAME	=	main.c				\
 				operation.c			\
 				del.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
-OBJ_PATH	=	objs/
+OBJ_PATH	=	obj/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))
 
 LIB			=	libft
@@ -35,19 +36,19 @@ LIB			=	libft
 all : $(NAME)
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
-	mkdir -p objs
+	mkdir -p $(OBJ_PATH)
 	$(C) $(CFLAG) $(INC) -c $< -o $@
 
 $(NAME) : $(OBJ)
 	make -C $(LIB)
-	$(C) $(CFLAG) $^ -Llibft -lft -o $@
+	$(C) $(CFLAG) $^ -L$(LIB) -lft -o $@
 
 clean :
 	make clean -C $(LIB)
-	rm -rf objs
+	rm -rf $(OBJ_PATH)
 
 fclean : clean
 	make fclean -C $(LIB)
-	rm push_swap
+	rm $(NAME)
 
 re : fclean all
