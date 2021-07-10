@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:39:25 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 04:13:38 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error(void)
 int	print(char *s)
 {
 	static int	cnt;
-	
+
 	write(1, s, ft_strlen(s));
 	cnt++;
 	return (cnt);
@@ -65,8 +65,7 @@ t_stack	*get_info_val(t_node *stack1, t_node *stack2)
 		if (stack)
 		{
 			info[i].size = 1;
-			while (stack->pre)
-				stack = stack->pre;
+			stack = move_init(stack);
 			info[i].top = stack;
 			while (stack->next)
 			{

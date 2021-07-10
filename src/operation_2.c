@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:29:30 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:41:52 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 03:56:04 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ static void	move(t_node **push, t_node **pop)
 	free(del);
 	del = NULL;
 }
+
 t_stack	*push_b(t_stack *tmp)
 {
 	t_node	*push;
 	t_node	*pop;
 	t_stack	*info;
-	
+
 	push = tmp[0].top;
 	pop = tmp[1].top;
 	if (!push)

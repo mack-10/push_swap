@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:47:55 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 04:13:50 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	push_swap(t_stack *info)
 
 int	main(int argc, char *argv[])
 {
-	{
 	t_node	*stack;
 	t_stack	*info;
 	char	**src;
@@ -50,7 +49,6 @@ int	main(int argc, char *argv[])
 	push_swap(info);
 	// 연산 횟수
 	// printf("cnt | %d\n", print("") - 1);
-	}
 	// while (1);
 	return (0);
 }

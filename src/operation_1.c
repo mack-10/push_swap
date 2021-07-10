@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 00:03:11 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:43:44 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 04:16:34 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,27 @@ static t_node	*rotate_2(t_node *stack)
 t_stack	*rotate_1(int flag, t_stack *tmp)
 {
 	t_stack	*info;
-	t_node	*stack1;
-	t_node	*stack2;
+	t_node	*stack[2];
 
-	stack1 = tmp[0].top;
-	stack2 = tmp[1].top;
-	if (!flag && stack1->next)
+	stack[0] = tmp[0].top;
+	stack[1] = tmp[1].top;
+	if (!flag && stack[0]->next)
 	{
-		stack1 = rotate_2(stack1);
+		stack[0] = rotate_2(stack[0]);
 		print("ra\n");
 	}
-	else if (flag == 1 && stack2->next)
+	else if (flag == 1 && stack[1]->next)
 	{
-		stack2 = rotate_2(stack2);
+		stack[1] = rotate_2(stack[1]);
 		print("rb\n");
 	}
-	else if (flag == 2 && stack1->next && stack2->next)
+	else if (flag == 2 && stack[0]->next && stack[1]->next)
 	{
-		stack1 = rotate_2(stack1);
-		stack2 = rotate_2(stack2);
+		stack[0] = rotate_2(stack[0]);
+		stack[1] = rotate_2(stack[1]);
 		print("rr\n");
 	}
-	info = get_info_val(stack1, stack2);
+	info = get_info_val(stack[0], stack[1]);
 	free(tmp);
 	tmp = NULL;
 	return (info);
@@ -101,28 +100,27 @@ static t_node	*reverse_rotate_2(t_node *stack)
 t_stack	*reverse_rotate_1(int flag, t_stack *tmp)
 {
 	t_stack	*info;
-	t_node	*stack1;
-	t_node	*stack2;
+	t_node	*stack[2];
 
-	stack1 = tmp[0].top;
-	stack2 = tmp[1].top;
-	if (!flag && stack1->next)
+	stack[0] = tmp[0].top;
+	stack[1] = tmp[1].top;
+	if (!flag && stack[0]->next)
 	{
-		stack1 = reverse_rotate_2(stack1);
+		stack[0] = reverse_rotate_2(stack[0]);
 		print("rra\n");
 	}
-	else if (flag == 1 && stack2->next)
+	else if (flag == 1 && stack[1]->next)
 	{
-		stack2 = reverse_rotate_2(stack2);
+		stack[1] = reverse_rotate_2(stack[1]);
 		print("rrb\n");
 	}
-	else if (flag == 2 && stack1->next && stack2->next)
+	else if (flag == 2 && stack[0]->next && stack[1]->next)
 	{
-		stack1 = reverse_rotate_2(stack1);
-		stack2 = reverse_rotate_2(stack2);
+		stack[0] = reverse_rotate_2(stack[0]);
+		stack[1] = reverse_rotate_2(stack[1]);
 		print("rrr\n");
 	}
-	info = get_info_val(stack1, stack2);
+	info = get_info_val(stack[0], stack[1]);
 	free(tmp);
 	tmp = NULL;
 	return (info);
