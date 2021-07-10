@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/08 05:41:14 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 03:46:27 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define G "\x1b[32m"
 # define RESET "\x1b[0m"
 
-static int cnt;
 /*
 **	STRUCT
 */
@@ -52,60 +51,48 @@ typedef struct s_stack
 */
 
 /*
-**	get_next_line.c
+**	parsing.c
 */
-int		get_next_line(char **line);
-char	*g_strjoin(char *s1, char *s2);
-
-/*
-**	utils.c
-*/
-void	error(void);
-void	print(char *s);
-void	free_once(char *s);
-void	free_double(char **s);
-void	get_info_val(t_stack **info, t_node *stack_a, t_node *stack_b);
-int		check_sort(t_node *stack, int flag);
+char	**parsing(int argc, char *argv[]);
 
 /*
 **	linked_list.c
 */
 
 t_node	*new_node(int num);
-t_node	*create_stack_a(char **src);
+t_node	*create_stack(char **src);
 t_stack	*create_info(t_node *stack);
 
 /*
-**	parsing.c
+**	sort_*.c
 */
-char	**parsing(int argc, char *argv[]);
-
-/*
-**	push_swap.c
-*/
-void	push_swap(t_stack *info);
-
-/*
-**	sort_under_five.c
-*/
-void	sort_under_5(t_stack *info);
+void	sort_4_5(t_stack *info);
+void	sort_over_5(t_stack *info);
 
 /*
 **	operation.c
 */
-void	s(char sign, t_node *stack);
-t_node	*r(char sign, t_stack *info);
-t_node	*rr(char sign, t_stack *info);
-void	p(char sign, t_node **push, t_node **pop);
+void	swap(int flag, t_node *stack);
+t_stack	*rotate_1(int flag, t_stack *tmp);
+t_stack	*reverse_rotate_1(int flag, t_stack *tmp);
+t_stack	*push_a(t_stack *tmp);
+t_stack	*push_b(t_stack *tmp);
 
 /*
-**	sort_over_five.c
+**	utils.c
 */
-void	sort_over_5(t_stack *info);
+void	error(void);
+int		print(char *s);
+void	free_once(char **s);
+void	free_double(char ***s);
+t_stack	*get_info_val(t_node *stack1, t_node *stack2);
+int		check_sort(t_node *stack);
+t_node	*move_init(t_node *stack);
+t_node	*move_end(t_node *stack);
+void	del_list(t_node *stack);
 
 // DELETE
 void	print_sort(t_stack *info);
 void	print_info(t_stack *info);
-
 
 #endif

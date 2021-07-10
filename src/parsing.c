@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 00:44:07 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/05 04:54:29 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 03:39:41 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static void	parsing_int_min_max(int sign, char *s)
 	if ((sign && ft_strncmp("2147483648", s, ft_strlen(s)) < 0)
 		|| (!sign && ft_strncmp("2147483647", s, ft_strlen(s)) < 0))
 		error();
-	free_once(join);
-	free_once(s);
+	free_once(&join);
+	free_once(&s);
 }
 
 static int	parsing_num(char *s)

@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/08 04:21:51 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 03:39:25 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,27 @@ void	error(void)
 	exit(0);
 }
 
-void	print(char *s)
+int	print(char *s)
 {
+	static int	cnt;
+	
 	write(1, s, ft_strlen(s));
-	write(1, "\n", 1);
+	cnt++;
+	return (cnt);
 }
 
-void	free_once(char *s)
+void	free_once(char **s)
 {
-	free(s);
-	s = NULL;
+	free(*s);
+	*s = NULL;
 }
 
-void	free_double(char **s)
+void	free_double(char ***s)
 {
-	int	i;
+	int		i;
+	char	**del;
 
+	del = *s;
 	i = -1;
 	while (s[++i])
 	{
@@ -44,30 +49,32 @@ void	free_double(char **s)
 	s = NULL;
 }
 
-void	get_info_val(t_stack **info, t_node *stack_a, t_node *stack_b)
+t_stack	*get_info_val(t_node *stack1, t_node *stack2)
 {
 	t_node	*stack;
+	t_stack	*info;
 	int		i;
 
+	info = (t_stack *)ft_calloc(2, sizeof(t_stack));
+	stack = stack1;
 	i = -1;
 	while (++i < 2)
 	{
-		if (!i)
-			stack = stack_a;
-		else
-			stack = stack_b;
+		if (i)
+			stack = stack2;
 		if (stack)
 		{
-			(*info)[i].size = 1;
+			info[i].size = 1;
 			while (stack->pre)
 				stack = stack->pre;
-			(*info)[i].top = stack;
+			info[i].top = stack;
 			while (stack->next)
 			{
 				stack = stack->next;
-				(*info)[i].size++;
+				info[i].size++;
 			}
-			(*info)[i].bot = stack;
+			info[i].bot = stack;
 		}
 	}
+	return (info);
 }

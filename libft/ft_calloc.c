@@ -6,12 +6,12 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 21:02:22 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/07 22:57:46 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/09 16:20:19 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../includes/push_swap.h"
+#include "../include/push_swap.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

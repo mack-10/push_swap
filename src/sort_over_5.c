@@ -6,116 +6,132 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 03:18:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/08 06:19:01 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/09 15:12:29 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_a(t_stack *info, int n);
-
-static int	find_pivot(t_node *stack, int n)
+static int	pivot_max(t_node *stack, int n)
 {
-	int	pivot;
-	int	i;
+	int		max;
+	int		i;
 
-	if (!stack)
-		return (0);
-	i = 0;
-	while (++i < n)
-		stack = stack->next;
-	pivot = stack->num;
-	return (pivot);
-}
-
-static void sort_b(t_stack *info, int n)
-{
-	int	pivot;
-	int rb;
-	int pa;
-	int	i;
-
-	printf(G);
-	if (n <= 1 || !info[1].top)
-	{
-		printf("achieve\n");
-		p('a', &info[1].top, &info[0].top);
-		print_sort(info);
-		return ;
-	}
-	pivot = find_pivot(info[1].top, n);
-	printf("\nn     | %d\n", n);
-	printf("pivot | %d\n\n", pivot);
-	rb = 0;
-	pa = 0;
+	max = 0;
 	i = -1;
 	while (++i < n)
 	{
-		printf("\ni/n     | %d/%d\n", i, n);
-		printf("pivot | %d\n\n", pivot);
-		if (info[1].top->next
-			&& info[1].top->num < info[1].top->next->num)
-		{
-			s('b', info[1].top);
-			print_sort(info);
-		}
-		if (info[1].top->num < pivot)
-		{
-			r('b', &info[1]);
-			rb++;
-		}
-		else
-		{
-			p('a', &info[1].top, &info[0].top);
-			pa++;
-		}
-		print_sort(info);
-		get_info_val(&info, info[0].top, info[1].top);
+		if (max < stack->num)
+			max = stack->num;
+		stack = stack->next;
 	}
-	printf(RESET);
-	sort_a(info, pa);
-	sort_b(info, info[1].size);
+	return (max);
 }
 
-static void sort_a(t_stack *info, int n)
+static int	check_dist(t_node *stack, int n)
 {
-	int	pivot;
-	int ra;
-	int pb;
+	int	loc1;
+	int	loc2;
+	int	cnt;
+
+	cnt = 0;
+	loc1 = 0;
+	loc2 = 0;
+	while (stack->next)
+	{
+		if (stack->num == n)
+			loc1 = cnt;
+		cnt++;
+		stack = stack->next;
+	}
+	cnt = 0;
+	while (stack->pre)
+	{
+		if (stack->num == n)
+			loc2 = cnt;
+		cnt++;
+		stack = stack->pre;
+	}
+	printf("loc %d %d\n", loc1, loc2);
+	return (loc1 - loc2);
+}
+
+static void	set_part(char f, t_stack *info[], int pivot)
+{
+	t_node	*stack;
+	int		ret;
+	
+	if (f == 'a')
+		stack = *info;
+	else
+		stack = *info + 1;
+
+	while (stack != pivot)
+	{
+		ret = check_dist(info->top, pivot);
+		if (ret > 0)
+			rotate(f, info);
+		else if (ret < 0)
+			reverse_roatate(f, info);
+		get_info_val(info, (info)
+		print_sort(info);
+	}
+}
+
+static void	sort_up(t_stack *info[], int pivot[], int op[])
+{
+	t_stack	*stack1;
+	t_stack	*stack2;
+
+	stack1 = *info;
+	stack2 = *info + 1;
+	if (stack1->top->num >= pivot[0])
+	{
+		rotate('a', stack1);
+		op[0]++;
+	}
+	else
+	{
+		p('b', &stack1->top, &stack2->top);
+		op[2]++;
+		get_info_val(info, (*info)[0].top, (*info)[1].top);
+		print_sort(*info);
+		if (stack2->top->num <= pivot[1])
+		{
+			rotate('b', stack1);
+			op[1]++;
+		}
+	}
+	get_info_val(info, (*info)[0].top, (*info)[1].top);
+	print_sort(*info);
+}
+
+void	sort_a(t_stack *info, int n)
+{
+	int pivot[2]; // max
+	int	op[3];
 	int	i;
 	
 	printf(R);
-	if (n <= 1 || !info[0].top
-		|| check_sort(info[0].top, 1))
+	if  (n <= 3)
 		return ;
-	pivot = find_pivot(info[0].top, n);
-	printf("\nn     | %d\n", n);
-	printf("pivot | %d\n\n", pivot);
-	ra = 0;
-	pb = 0;
+	pivot[0] = pivot_max(info[0].top, n);
+	if (info[0].top->num == pivot[0])
+		rotate('a', &info[0]);
+	p('b', &info[0].top, &info[1].top);
+	get_info_val(&info, info[0].top, info[1].top);
+	pivot[1] = info[1].top->num;
+	print_sort(info);
+
 	i = -1;
-	while (++i < n && info[0].size > 1)
-	{
-		if (info[0].top->num > pivot)
-		{
-			r('a', &info[0]);
-			ra++;
-		}
-		else
-		{
-			p('b', &info[0].top, &info[1].top);
-			pb++;
-		}
-		print_sort(info);
-		get_info_val(&info, info[0].top, info[1].top);
-	}
+	while (++i < 2)
+		sort_up(&info, pivot, op);
+	set_part('a', &info, pivot[1]);
+	get_info_val(&info, info[0].top, info[1].top);
 	printf(RESET);
-	sort_a(info, ra);
-	sort_b(info, pb);
 }
 
 void	sort_over_5(t_stack *info)
 {
-	print_sort(info);
 	sort_a(info, info[0].size);
 }
