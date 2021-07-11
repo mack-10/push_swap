@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 00:03:11 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/12 01:06:57 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 03:15:35 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	swap(int flag, t_node *stack)
 {
 	int	tmp;
-
 	if (!stack->next)
 		return ;
 	tmp = stack->num;
@@ -23,8 +22,9 @@ void	swap(int flag, t_node *stack)
 	stack->next->num = tmp;
 	if (!flag)
 		print("sa\n");
-	else
+	else if (flag == 1)
 		print("sb\n");
+	
 }
 
 static t_node	*rotate_2(t_node *stack)

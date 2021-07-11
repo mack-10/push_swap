@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 03:18:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/12 02:01:51 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 06:11:46 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	set_stack(t_stack **info, int ra, int rb)
 {
-	while (ra || rb)
+	while (ra > 1 || rb > 1)
 	{
-		if (ra && rb
+		if (ra > 1 && rb > 1
 			&& (*info)[0].size != 1
 			&& (*info)[1].size != 1)
 		{
@@ -24,12 +24,12 @@ void	set_stack(t_stack **info, int ra, int rb)
 			ra--;
 			rb--;
 		}
-		else if (ra)
+		else if (ra > 1)
 		{
 			*info = reverse_rotate_1(0, *info);
 			ra--;
 		}
-		else if (rb)
+		else if (rb > 1)
 		{
 			*info = reverse_rotate_1(1, *info);
 			rb--;
@@ -51,7 +51,7 @@ static t_stack	*sort_a(t_stack *tmp, int *op, int pivot[])
 	{
 		info = push_b(info);
 		op[2]++;
-		if (info[1].top->num < pivot[1])
+		if (info[1].top->num >= pivot[1])
 		{
 			info = rotate_1(1, info);
 			op[1]++;
@@ -64,22 +64,25 @@ static t_stack	*sort_a(t_stack *tmp, int *op, int pivot[])
 
 t_stack	*stack_a(t_stack *info, int n)
 {
-	int	pivot[2];
-	int	*op;
+	int	pivot[2];	// [0] big [1] small
+	int	*op;		// operation count
 	int	i;
 
 	printf(R);
 	if (n < 3)
 	{
-		if (info[0].size != 1 && info[0].top->num > info[0].top->next->num)
+		if (info[0].size != 1
+			&& info[0].top->num > info[0].top->next->num)
 			swap(0, info[0].top);
 		return (info);
 	}
-	while (info[0].top->num > info[0].bot->num)
-		info = rotate_1(0, info);
-	info = push_b(info);
-	pivot[0] = info[0].bot->num;
-	pivot[1] = info[1].top->num;
+	pivot[0] = info[0].top->num;	
+	pivot[1] = info[0].top->next->num;
+	if (pivot[0] < pivot[1])
+	{
+		pivot[0] = info[0].top->next->num;
+		pivot[1] = info[0].top->num;
+	}
 	printf("pivot | %d %d\n", pivot[0], pivot[1]);
 	op = (int *)ft_calloc(3, sizeof(int));
 	i = -1;
@@ -88,7 +91,10 @@ t_stack	*stack_a(t_stack *info, int n)
 	set_stack(&info, op[0], op[1]);
 	print_sort(info);
 	printf(RESET);
-	free(op);
+	info = stack_a(info, op[0]);			//[3]
+	info = stack_b(info, op[1]);			//[2]
+	info = stack_b(info, op[2] - op[1]);	//[1]
+	// free(op);
 	return (info);
 }
 

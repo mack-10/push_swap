@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/12 01:44:49 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 04:10:34 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	set_stack(t_stack **info, int ra, int rb);
 */
 
 void	swap(int flag, t_node *stack);
+void	swap_2(t_stack *info);
 t_stack	*rotate_1(int flag, t_stack *tmp);
 t_stack	*reverse_rotate_1(int flag, t_stack *tmp);
 t_stack	*push_a(t_stack *tmp);
@@ -94,6 +95,7 @@ void	free_once(char **s);
 void	free_double(char ***s);
 t_stack	*get_info_val(t_node *stack1, t_node *stack2);
 int		check_sort(t_node *stack);
+int		reverse_check_sort(t_node *stack);
 t_node	*move_init(t_node *stack);
 t_node	*move_end(t_node *stack);
 void	del_list(t_node *stack);

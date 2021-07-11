@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:29:30 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:56:04 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 03:16:33 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,11 @@ t_stack	*push_a(t_stack *tmp)
 	free(tmp);
 	tmp = NULL;
 	return (info);
+}
+
+void	swap_2(t_stack *info)
+{
+	swap(2, info[0].top);
+	swap(2, info[1].top);
+	print("ss\n");
 }

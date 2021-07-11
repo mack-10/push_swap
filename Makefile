@@ -6,12 +6,12 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/12 01:37:44 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/12 06:12:02 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C			=	gcc
-CFLAG		=	-Wall -Wextra -Werror 
+CFLAG		=	-Wall -Wextra -Werror -fsanitize=address
 INC			=	-Iinclude
 NAME		=	push_swap
 SRC_PATH	=	src/

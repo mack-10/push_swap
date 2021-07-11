@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 04:21:57 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 22:53:37 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 03:05:29 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@ int	check_sort(t_node *stack)
 	while (stack->next)
 	{
 		if (stack->num > stack->next->num)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	reverse_check_sort(t_node *stack)
+{
+	while (stack->next)
+	{
+		if (stack->num < stack->next->num)
 			return (0);
 		stack = stack->next;
 	}
