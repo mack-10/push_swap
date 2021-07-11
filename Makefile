@@ -6,12 +6,12 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/11 03:07:49 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/12 01:37:44 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C			=	gcc
-CFLAG		=	-Wall -Wextra -Werror
+CFLAG		=	-Wall -Wextra -Werror 
 INC			=	-Iinclude
 NAME		=	push_swap
 SRC_PATH	=	src/
@@ -23,6 +23,8 @@ SRC_NAME	=	main.c				\
 				utils_1.c			\
 				utils_2.c			\
 				sort_4_5.c			\
+				sort_over_5_1.c		\
+				sort_over_5_2.c		\
 				del.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ_PATH	=	obj/

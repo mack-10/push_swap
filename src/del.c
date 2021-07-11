@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 02:39:28 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/09 19:03:05 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/11 23:15:47 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_sort(t_stack *info)
 			stack_a = stack_a->next;
 		}
 		else
-			printf("\t");
+			printf("\t\t");
 		if (stack_b)
 		{
 			printf("\t%d", stack_b->num);

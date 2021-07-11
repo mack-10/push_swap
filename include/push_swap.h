@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 03:46:27 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/12 01:44:49 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_stack
 /*
 **	parsing.c
 */
+
 char	**parsing(int argc, char *argv[]);
 
 /*
@@ -66,12 +67,17 @@ t_stack	*create_info(t_node *stack);
 /*
 **	sort_*.c
 */
+
 void	sort_4_5(t_stack *info);
 void	sort_over_5(t_stack *info);
+t_stack	*stack_a(t_stack *info, int n);
+t_stack	*stack_b(t_stack *info, int n);
+void	set_stack(t_stack **info, int ra, int rb);
 
 /*
 **	operation.c
 */
+
 void	swap(int flag, t_node *stack);
 t_stack	*rotate_1(int flag, t_stack *tmp);
 t_stack	*reverse_rotate_1(int flag, t_stack *tmp);
@@ -81,6 +87,7 @@ t_stack	*push_b(t_stack *tmp);
 /*
 **	utils.c
 */
+
 void	error(void);
 int		print(char *s);
 void	free_once(char **s);
