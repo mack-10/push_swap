@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 05:51:45 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 06:25:01 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,29 @@ static t_stack	*move(char *line, t_stack *info)
 	t_stack	*del;
 
 	del = info;
-	if (!ft_strncmp(line, "sa", ft_strlen(line)))
+	if (!ft_strncmp(line, "sa", 2))
 		move_s(info[0].top);
-	else if (!ft_strncmp(line, "sb", ft_strlen(line)))
+	else if (!ft_strncmp(line, "sb", 2))
 		move_s(info[1].top);
-	else if (!ft_strncmp(line, "ra", ft_strlen(line)))
+	else if (!ft_strncmp(line, "ra", 2))
 		info[0].top = move_r(info[0].top);
-	else if (!ft_strncmp(line, "rb", ft_strlen(line)))
+	else if (!ft_strncmp(line, "rb", 2))
 		info[1].top = move_r(info[1].top);
-	else if (!ft_strncmp(line, "rra", ft_strlen(line)))
+	else if (!ft_strncmp(line, "rra", 3))
 		info[0].top = move_rr(info[0].top);
-	else if (!ft_strncmp(line, "rrb", ft_strlen(line)))
+	else if (!ft_strncmp(line, "rrb", 3))
 		info[1].top = move_rr(info[1].top);
-	else if (!ft_strncmp(line, "rrr", ft_strlen(line)))
+	else if (!ft_strncmp(line, "rrr", 3))
 	{
 		info[0].top = move_rr(info[0].top);
 		info[1].top = move_rr(info[1].top);
 	}
-	else if (!ft_strncmp(line, "pb", ft_strlen(line)))
+	else if (!ft_strncmp(line, "pb", 2))
 		move_p(&info[0].top, &info[1].top);
-	else if (!ft_strncmp(line, "pa", ft_strlen(line)))
+	else if (!ft_strncmp(line, "pa", 2))
 		move_p(&info[1].top, &info[0].top);
+	else
+		error();
 	info = get_info_val(info[0].top, info[1].top);
 	free(del);
 	del = NULL;
@@ -51,6 +53,8 @@ static void	read_lines(t_stack *info)
 	line = NULL;
 	while (get_next_line(&line))
 	{
+		if (ft_strrchr(line, ' '))
+			error();
 		info = move(line, info);
 		free_once(&line);
 	}
