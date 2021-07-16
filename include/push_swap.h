@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 02:02:37 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 05:21:12 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
+
+#include <stdio.h>
 
 /*
 **	STRUCT
@@ -73,7 +75,6 @@ void	set_pivot(int flag, int pivot[], t_node *stack);
 */
 
 void	swap(int flag, t_node *stack);
-void	swap_2(t_stack *info);
 t_stack	*rotate_1(int flag, t_stack *tmp);
 t_stack	*reverse_rotate_1(int flag, t_stack *tmp);
 t_stack	*push_a(t_stack *tmp);

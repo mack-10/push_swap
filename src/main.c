@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 02:02:22 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 06:14:49 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ int	main(int argc, char *argv[])
 	t_stack	*info;
 	char	**src;
 
+	src = parsing(argc, argv);
 	if (argc == 1)
 		exit(0);
-	src = parsing(argc, argv);
 	stack = create_stack(src);
 	if (argc == 2)
 		free_double(&src);
 	info = get_info_val(stack, NULL);
 	push_swap(info);
+	// printf("cnt %d\n", print("") - 1);
 	return (0);
 }

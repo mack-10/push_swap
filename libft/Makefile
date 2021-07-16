@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/17 03:11:27 by sujeon            #+#    #+#              #
+#    Updated: 2021/07/17 03:39:58 by sujeon           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 NAME		=	libft.a
@@ -48,18 +60,23 @@ OBJS		=	$(SRCS:.c=.o)
 BONUS_OBJS	=	$(BONUS_SRCS:.c=.o)
 AR			=	ar rcs
 
-$(NAME) : $(OBJS)
-	$(AR) $@ $^
-
-bonus : $(BONUS_OBJS)
-	$(AR) $(NAME) $^
-
 all : $(NAME)
 
+%.o : %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME) : $(OBJS)
+	@$(AR) $@ $^
+
+bonus : $(BONUS_OBJS)
+	@$(AR) $(NAME) $^
+
+
+
 clean :
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
