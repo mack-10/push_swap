@@ -6,7 +6,7 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/17 04:58:01 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/17 06:33:13 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,7 @@ C_SRC_NAME	=	main.c				\
 				utils_1.c			\
 				utils_2.c			\
 				operation.c			\
-				get_next_line.c		\
-				del.c
+				get_next_line.c
 C_SRC		=	$(addprefix $(C_SRC_PATH), $(C_SRC_NAME))
 C_OBJ_PATH	=	checker_obj/
 C_OBJ		=	$(addprefix $(C_OBJ_PATH), $(C_SRC_NAME:.c=.o))
