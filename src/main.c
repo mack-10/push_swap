@@ -6,11 +6,19 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/16 23:11:10 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 02:02:22 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	sort_over_5(t_stack *info)
+{
+	info = stack_a(info, info[0].size);
+	del_list(info[0].top);
+	free(info);
+	info = NULL;
+}
 
 static void	sort_3(t_stack *info)
 {
@@ -40,20 +48,17 @@ static void	push_swap(t_stack *info)
 
 int	main(int argc, char *argv[])
 {
-	{t_node	*stack;
+	t_node	*stack;
 	t_stack	*info;
 	char	**src;
 
 	if (argc == 1)
-		error();
+		exit(0);
 	src = parsing(argc, argv);
 	stack = create_stack(src);
 	if (argc == 2)
 		free_double(&src);
 	info = get_info_val(stack, NULL);
-	push_swap(info);}
-	// 연산 횟수
-	printf("cnt | %d\n", print("") - 1);
-	// while (1);
+	push_swap(info);
 	return (0);
 }

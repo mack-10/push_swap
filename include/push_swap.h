@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/12 04:10:34 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 02:02:37 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
-
-// DELETE
-# include <stdio.h>
-# define R "\x1b[31m"
-# define G "\x1b[32m"
-# define RESET "\x1b[0m"
 
 /*
 **	STRUCT
@@ -69,10 +63,10 @@ t_stack	*create_info(t_node *stack);
 */
 
 void	sort_4_5(t_stack *info);
-void	sort_over_5(t_stack *info);
 t_stack	*stack_a(t_stack *info, int n);
 t_stack	*stack_b(t_stack *info, int n);
 void	set_stack(t_stack **info, int ra, int rb);
+void	set_pivot(int flag, int pivot[], t_node *stack);
 
 /*
 **	operation.c
@@ -99,9 +93,5 @@ int		reverse_check_sort(t_node *stack);
 t_node	*move_init(t_node *stack);
 t_node	*move_end(t_node *stack);
 void	del_list(t_node *stack);
-
-// DELETE
-void	print_sort(t_stack *info);
-void	print_info(t_stack *info);
 
 #endif

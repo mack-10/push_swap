@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 03:18:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/16 23:20:01 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 01:55:53 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,69 +62,52 @@ static t_stack	*sort_a(t_stack *tmp, int *op, int pivot[])
 	return (info);
 }
 
-static int	*set_pivot(t_node *stack, int n)
+void	set_pivot(int flag, int pivot[], t_node *stack)
 {
-	int	i;
-	int	max;
-
-	i = 0;
-	max = stack->num;
-	while (++i < n)
+	pivot[0] = stack->num;
+	pivot[1] = stack->next->num;
+	if (!flag && pivot[0] < pivot[1])
 	{
-		if (max < stack->num)
-			max = stack->num;
-		stack = stack->next;
+		pivot[0] = stack->next->num;
+		pivot[1] = stack->num;
 	}
-	return (max);
+	if (flag && pivot[0] > pivot[1])
+	{
+		pivot[0] = stack->next->num;
+		pivot[1] = stack->num;
+	}
+}
+
+static t_stack	*n_smaller_than_3(t_stack *info)
+{
+	if (info[0].size != 1
+		&& info[0].top->num > info[0].top->next->num)
+		swap(0, info[0].top);
+	return (info);
 }
 
 t_stack	*stack_a(t_stack *tmp, int n)
 {
-	int	pivot[2];	// [0] big [1] small
-	int	op[3];		// operation count ra rb pa,pb
-	int	i;
+	int		pivot[2];
+	int		*op;
+	int		i;
 	t_stack	*info;
 
 	info = get_info_val(tmp[0].top, tmp[1].top);
 	free(tmp);
 	tmp = NULL;
 	if (n < 3)
-	{
-		if (info[0].size != 1
-			&& info[0].top->num > info[0].top->next->num)
-			swap(0, info[0].top);
-		return (info);
-	}
-	pivot[0] = info[0].bot->num;	
-	pivot[1] = info[0].top->num;
-	if (pivot[0] < pivot[1])
-	{
-		while (pivot[0] < pivot[1])
-		{
-			pivot[0] = info[0].top->next->num;
-			pivot[1] = info[0].top->num;	
-		}
-		
-	}
-	printf("pivot | %d %d\n", pivot[0], pivot[1]);
-	i = -1;
-	while (++i < 3)
-		op[i] = 0;
+		return (n_smaller_than_3(info));
+	set_pivot(0, pivot, info[0].top);
+	op = (int *)ft_calloc(3, sizeof(int));
 	i = -1;
 	while (++i < n && info[0].size != 1)
 		info = sort_a(info, op, pivot);
 	set_stack(&info, op[0], op[1]);
-	info = stack_a(info, op[0]);			//[3]
-	info = stack_b(info, op[1]);			//[2]
-	info = stack_b(info, op[2] - op[1]);	//[1]
+	info = stack_a(info, op[0]);
+	info = stack_b(info, op[1]);
+	info = stack_b(info, op[2] - op[1]);
+	free(op);
+	op = NULL;
 	return (info);
-}
-
-void	sort_over_5(t_stack *info)
-{
-	info = stack_a(info, info[0].size);
-	del_list(info[0].top);
-	free(info);
-	info = NULL;
-	// print_sort(info);
 }

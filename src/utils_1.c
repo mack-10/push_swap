@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:58:08 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/11 04:13:38 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 01:54:45 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	write(2, "Error\n", 5);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -40,13 +40,13 @@ void	free_double(char ***s)
 
 	del = *s;
 	i = -1;
-	while (s[++i])
+	while (del[++i])
 	{
-		free(s[i]);
-		s[i] = NULL;
+		free(del[i]);
+		del[i] = NULL;
 	}
-	free(s);
-	s = NULL;
+	free(del);
+	del = NULL;
 }
 
 t_stack	*get_info_val(t_node *stack1, t_node *stack2)

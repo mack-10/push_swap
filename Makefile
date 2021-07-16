@@ -6,7 +6,7 @@
 #    By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 23:13:41 by sujeon            #+#    #+#              #
-#    Updated: 2021/07/16 23:09:24 by sujeon           ###   ########.fr        #
+#    Updated: 2021/07/17 00:30:14 by sujeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,10 @@ SRC_NAME	=	main.c				\
 				utils_2.c			\
 				sort_4_5.c			\
 				sort_over_5_1.c		\
-				sort_over_5_2.c		\
-				del.c
+				sort_over_5_2.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ_PATH	=	obj/
 OBJ			=	$(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))
-
 LIB			=	libft
 
 .PHONY : all clean fclean re
