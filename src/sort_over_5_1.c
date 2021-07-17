@@ -6,35 +6,59 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 03:18:37 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 01:55:53 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 23:35:03 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_stack(t_stack **info, int ra, int rb)
+static void	sort_arr(int arr[], int n)
 {
-	while (ra || rb)
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = -1;
+	while (++i + 1 < n)
 	{
-		if (ra && rb
-			&& (*info)[0].size > 2
-			&& (*info)[1].size > 2)
+		j = i;
+		while (++j < n)
 		{
-			*info = reverse_rotate_1(2, *info);
-			ra--;
-			rb--;
-		}
-		else if (ra)
-		{
-			*info = reverse_rotate_1(0, *info);
-			ra--;
-		}
-		else if (rb)
-		{
-			*info = reverse_rotate_1(1, *info);
-			rb--;
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
 		}
 	}
+}
+
+void	find_pivot(int flag, int pivot[], t_node *stack, int n)
+{
+	int		i;
+	int		*arr;
+
+	arr = (int *)ft_calloc(n, sizeof(int));
+	i = -1;
+	while (++i < n)
+	{
+		arr[i] = stack->num;
+		stack = stack->next;
+	}
+	sort_arr(arr, n);
+	if (!flag)
+	{
+		pivot[0] = arr[(n / 3) *2];
+		pivot[1] = arr[n / 3];
+	}
+	else
+	{
+		pivot[0] = arr[n / 3];
+		pivot[1] = arr[(n / 3) *2];
+	}
+	free(arr);
+	arr = NULL;
 }
 
 static t_stack	*sort_a(t_stack *tmp, int *op, int pivot[])
@@ -62,22 +86,6 @@ static t_stack	*sort_a(t_stack *tmp, int *op, int pivot[])
 	return (info);
 }
 
-void	set_pivot(int flag, int pivot[], t_node *stack)
-{
-	pivot[0] = stack->num;
-	pivot[1] = stack->next->num;
-	if (!flag && pivot[0] < pivot[1])
-	{
-		pivot[0] = stack->next->num;
-		pivot[1] = stack->num;
-	}
-	if (flag && pivot[0] > pivot[1])
-	{
-		pivot[0] = stack->next->num;
-		pivot[1] = stack->num;
-	}
-}
-
 static t_stack	*n_smaller_than_3(t_stack *info)
 {
 	if (info[0].size != 1
@@ -98,7 +106,7 @@ t_stack	*stack_a(t_stack *tmp, int n)
 	tmp = NULL;
 	if (n < 3)
 		return (n_smaller_than_3(info));
-	set_pivot(0, pivot, info[0].top);
+	find_pivot(0, pivot, info[0].top, n);
 	op = (int *)ft_calloc(3, sizeof(int));
 	i = -1;
 	while (++i < n && info[0].size != 1)

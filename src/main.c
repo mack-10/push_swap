@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 06:48:43 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 23:38:47 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ int	main(int argc, char *argv[])
 		free_double(&src);
 	info = get_info_val(stack, NULL);
 	push_swap(info);
-	printf("%d\n", print("") - 1);
 	return (0);
 }

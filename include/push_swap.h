@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:19:23 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 06:48:06 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/17 23:33:22 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
-
-#include <stdio.h>
 
 /*
 **	STRUCT
@@ -46,6 +44,9 @@ typedef struct s_stack
 **	FUNCTION
 */
 
+// del
+void	print_sort(t_stack *info);
+
 /*
 **	parsing.c
 */
@@ -68,7 +69,7 @@ void	sort_4_5(t_stack *info);
 t_stack	*stack_a(t_stack *info, int n);
 t_stack	*stack_b(t_stack *info, int n);
 void	set_stack(t_stack **info, int ra, int rb);
-void	set_pivot(int flag, int pivot[], t_node *stack);
+void	find_pivot(int flag, int pivot[], t_node *stack, int n);
 
 /*
 **	operation.c
