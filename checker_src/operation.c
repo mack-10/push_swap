@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 00:03:11 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 04:41:50 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/19 23:18:39 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	move_s(t_node *stack)
 {
 	int	tmp;
 
-	if (!stack->next)
+	if (!stack || !stack->next)
 		return ;
 	tmp = stack->num;
 	stack->num = stack->next->num;
@@ -28,7 +28,7 @@ t_node	*move_r(t_node *stack)
 	t_node	*new;
 	t_node	*del;
 
-	if (!stack->next)
+	if (!stack || !stack->next)
 		return (stack);
 	new = new_node(stack->num);
 	del = stack;
@@ -48,8 +48,8 @@ t_node	*move_rr(t_node *stack)
 	t_node	*new;
 	t_node	*del;
 
-	if (!stack->next)
-		return (NULL);
+	if (!stack || !stack->next)
+		return (stack);
 	stack = move_end(stack);
 	del = stack;
 	new = new_node(stack->num);
@@ -69,6 +69,8 @@ void	move_p(t_node **push, t_node **pop)
 	t_node	*del;
 	t_node	*new;
 
+	if (!*push)
+		return ;
 	del = *push;
 	new = new_node((*push)->num);
 	if (!(*pop))
