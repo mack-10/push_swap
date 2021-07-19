@@ -44,7 +44,6 @@ typedef struct s_stack
 **	FUNCTION
 */
 
-
 /*
 **	parsing.c
 */
