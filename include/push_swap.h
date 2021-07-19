@@ -44,8 +44,6 @@ typedef struct s_stack
 **	FUNCTION
 */
 
-// del
-void	print_sort(t_stack *info);
 
 /*
 **	parsing.c
