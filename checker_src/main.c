@@ -6,7 +6,7 @@
 /*   By: sujeon <sujeon@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:18:49 by sujeon            #+#    #+#             */
-/*   Updated: 2021/07/17 23:41:00 by sujeon           ###   ########.fr       */
+/*   Updated: 2021/07/19 23:04:44 by sujeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	move(char *line, t_stack **info)
 		move_p(&(*info)[0].top, &(*info)[1].top);
 	else if (!ft_strncmp(line, "pa", 2))
 		move_p(&(*info)[1].top, &(*info)[0].top);
+	else if (ft_strncmp(line, "ss", 2) && ft_strncmp(line, "rr", 2))
+		error();
 }
 
 static t_stack	*checker(char *line, t_stack *info)
@@ -42,10 +44,7 @@ static t_stack	*checker(char *line, t_stack *info)
 	t_stack	*del;
 
 	del = info;
-	if (2 <= ft_strlen(line) && ft_strlen(line) <= 3)
-		move(line, &info);
-	else
-		error();
+	move(line, &info);
 	info = get_info_val(info[0].top, info[1].top);
 	free(del);
 	del = NULL;
