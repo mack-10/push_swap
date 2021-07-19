@@ -1,4 +1,7 @@
 # push_swap
 
 - minckim tester
-[Tester](https://github.com/minckim42/push_swap_tester.git)
+[Link](https://github.com/minckim42/push_swap_tester.git)
+
+- checker_MAC
+[Downloat](https://projects.intra.42.fr/uploads/document/document/3865/checker_Mac)
