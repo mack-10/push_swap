@@ -14,28 +14,28 @@
 
 static void	move(char *line, t_stack **info)
 {
-	if (!ft_strncmp(line, "sa", 2))
+	if (!ft_strncmp(line, "sa", 3))
 		move_s((*info)[0].top);
-	else if (!ft_strncmp(line, "sb", 2))
+	else if (!ft_strncmp(line, "sb", 3))
 		move_s((*info)[1].top);
-	else if (!ft_strncmp(line, "ra", 2))
+	else if (!ft_strncmp(line, "ra", 3))
 		(*info)[0].top = move_r((*info)[0].top);
-	else if (!ft_strncmp(line, "rb", 2))
+	else if (!ft_strncmp(line, "rb", 3))
 		(*info)[1].top = move_r((*info)[1].top);
-	else if (!ft_strncmp(line, "rra", 3))
+	else if (!ft_strncmp(line, "rra", 4))
 		(*info)[0].top = move_rr((*info)[0].top);
-	else if (!ft_strncmp(line, "rrb", 3))
+	else if (!ft_strncmp(line, "rrb", 4))
 		(*info)[1].top = move_rr((*info)[1].top);
-	else if (!ft_strncmp(line, "rrr", 3))
+	else if (!ft_strncmp(line, "rrr", 4))
 	{
 		(*info)[0].top = move_rr((*info)[0].top);
 		(*info)[1].top = move_rr((*info)[1].top);
 	}
-	else if (!ft_strncmp(line, "pb", 2))
+	else if (!ft_strncmp(line, "pb", 3))
 		move_p(&(*info)[0].top, &(*info)[1].top);
-	else if (!ft_strncmp(line, "pa", 2))
+	else if (!ft_strncmp(line, "pa", 3))
 		move_p(&(*info)[1].top, &(*info)[0].top);
-	else if (ft_strncmp(line, "ss", 2) && ft_strncmp(line, "rr", 2))
+	else if (ft_strncmp(line, "ss", 3) && ft_strncmp(line, "rr", 3))
 		error();
 }
 
